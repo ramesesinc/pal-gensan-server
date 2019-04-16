@@ -1,0 +1,16 @@
+<h2>${PAGE.title}<h2>
+
+<script>
+\$put('tools', new function(){
+
+	var _svc = Service.lookup('QueueMonitorService', 'main'); 
+	var _self = this; 
+
+	this.reloadMonitor = function() {
+		_svc.refresh({ groupid: 'PAL' });  
+	} 
+
+}); 
+</script>
+
+<input type="button" r:context="tools" r:name="reloadMonitor" value="Reload Monitors"/>

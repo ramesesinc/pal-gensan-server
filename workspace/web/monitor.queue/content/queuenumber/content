@@ -1,0 +1,59 @@
+<script>
+\$put("queuenumber", new function(){ 
+
+	this.ticketno = null; 
+	this.txndate = null;
+	this.title = null;
+
+	this.print = function(){
+		window.print();
+		return "_close"
+	}
+	this.doClose = function() {
+		return "_close"
+	}
+}); 
+</script>
+
+
+<style>
+.cutter{font-size:5px; font-weight: normal;margin-top: 20px;}
+input.queue-button { font-size:12pt;width: 100px;margin-bottom: 10px; margin-top: 10px;padding: 10px;background: #02215f; color: #ffffff}
+.queue-header { width:100%; text-align:center; font-size:16pt; font-family:Tahoma; }
+.queue-number-title {font-size:20px;font-weight:bold;color:#505050;padding-left:5px;margin:0px;text-align: center;}
+.queue-number-series { text-align:center; padding:0px; margin: 0}
+.queue-number-series > label { font-size:2.5em; }
+.queue-info { width:100%;text-align:center; font-size:20px; padding-bottom:10px; line-height: 25px;}
+.queue-logo img {width: 270px;height:50px;margin: 0!important;padding: 0 !important; line-height: 0px !important;}
+.ui-dialog .ui-dialog-content{padding: 0}
+</style>
+
+<div class="printable"> <!-- open printable --> 
+	<p class="queue-logo"><img src="/res/queue/images/lgu-logo.png"></p>
+	<p class="queue-number-title">General Santos Branch</p>
+	<div class="queue-header">Ticket Number</div>   
+	<h1 class="queue-number-series">
+		<label r:context="queuenumber">#{ticketno}</label>
+	</h1> 
+	<div class="queue-info">
+		<label r:context="queuenumber">#{title}</label>
+	</div>
+	<div class="queue-info">
+		Valid only on <label r:context="queuenumber">#{txndate}</label>
+	</div>
+	<!--<img id="barcode" style="width:295px; height:50px;"/>	--> 
+	<p class="cutter">-</p>
+</div> <!-- close printable -->	
+
+<div align="center"> 
+     <input class="queue-button" type="button" r:context="queuenumber" value="Print"  r:name="print">
+     <!--<input class="queue-button" type="button" r:context="queuenumber"  value="Close" r:name="doClose" r:immediate="true">-->
+</div> 
+
+
+</div>
+<script>
+	\$(document).ready(function(){
+		\$("#barcode").JsBarcode("51005:B19520161000188-2R",{width:2,height:45});
+	});
+</script>

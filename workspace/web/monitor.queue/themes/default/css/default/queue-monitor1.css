@@ -1,0 +1,230 @@
+html,
+body{
+    margin:0;
+    padding:0;
+    font-family:'Arial Black', sans-serif;   
+
+}
+span{
+    text-align: center !important  ;
+}
+* { margin: 0; padding: 0; }
+
+.clear {
+  clear: both;
+}
+
+.floatLeft {
+  float: left;
+}
+
+.floatRight {
+  float: right;
+}
+
+.header li {
+    font-family:'Arial', sans-serif;
+    color: #ffffff;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 10px;
+}
+/*video{
+  object-fit: fill !important;
+}*/
+.wrapper {
+  min-height:100%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 300;
+  overflow: hidden;
+
+}
+.header {
+    background:transparent;
+    padding:10px;
+}
+.headertv li {
+    font-family:'Arial', sans-serif;
+    vertical-align: middle;
+    padding: 10px;
+}
+.logo-pal img{
+  width: 400px;
+}
+.servedQueue{
+  margin: 0;
+  padding-left:10px;
+  padding-right: 10px;
+}
+.content {
+    margin-left: 10px;
+    margin-top: 20px;
+}
+.wrap {
+    width:100%;
+    display: inline-flex;
+}
+
+#video-panel
+{
+    cursor: none;
+    background-color: black;
+    margin-left: 20px;
+    width: 50vh;
+    height: 70vh;
+}
+.headerServing h2{
+	padding:5px;
+font-size: 70px;
+text-align:center;
+font-weight:bold;
+color:red;
+}
+@media (min-device-width: 1200px){ 
+  .serving{
+    width: 75%;
+  }
+  .serving h2{
+  
+  }
+  .ticketno{
+  font-size: 140px;
+  font-weight: bold;
+  }
+  .counterno{
+  font-size: 120px;
+  font-weight: bold;
+  }
+}
+.serving-container{
+  width: 35vw;
+}
+.serving{
+    float:left;
+    padding-top: 0;
+}
+.counter{
+  float:left;
+  padding-top: 0;
+  width: 25%;
+  text-align: center;
+}
+.counter h2{
+  color: #02215f;
+  margin: 0;
+  line-height: 1;
+  height: 115px;
+  text-align: center;
+}
+.serving h2{
+  color: red;
+  margin: 0;
+  height: 110px;
+  line-height: 1;
+  text-align: center;
+}
+.serving-label{
+    color: red;
+    font-size: 25px;
+    padding-left: 10px;
+}
+.dep-name{
+  text-align: center;
+  color: #ffffff;
+  padding: 0px;
+  margin: 0;
+  background:#02215f;
+  }
+.counter-container{
+    width: 100%;
+    height: 155px;
+    float: left;
+    margin:2px 0px 2px 0px;
+    background: #ffffff;
+}
+.counter-bg{
+  background: #eeeeee;
+}
+.counter-label{
+  font-size: 30px;
+  color: #02215f;
+}
+.number-consumed {
+    color: #b0b0b0;
+    text-shadow: #707070 1px 1px 0;
+}
+.waiting-list{
+    margin-bottom: 10px;
+}
+.announcement{
+    font-family:'Arial', sans-serif;
+    font-size: 65px;
+    color: #000;
+    vertical-align: middle;
+    margin:0;
+    padding-top:10px;
+}
+div.video-panel {
+  text-align: center;
+  width: 100vw;
+}
+#video {
+  margin:0; padding:0; 
+  width:100%
+} 
+
+#waitlist_header {
+font-size: 2em; 
+text-transform: uppercase;
+  color: maroon;
+  background-color: #d0d0d0;
+  padding:2px; font-weight:bold;
+  text-align: center;
+}
+#waitlist_item {
+  color: red;
+  display:none; 
+  padding:10px;
+  font-size:30pt;
+  text-align:center;
+}
+.footer-leftside {
+  display: inline-block;
+  width: 80%;
+  height: 70px;
+  float:left;
+}
+.footer-rightside{
+  background-color: #ffffff;
+  display: inline-block;
+  width: 100%;
+  height: 100px;
+  margin-top:20px;
+}
+.rameses-logo {
+    overflow: hidden;
+    margin: 0 auto;
+}
+.rameses-logo img{
+    padding-top:10px;
+    width: 230px;
+    margin: 0 auto;
+}
+.deskclock{
+	color: #fff;
+	font-size: 40px;
+	padding-left: 5px;
+	font-weight: normal;
+	padding-top: 10px;
+}
+#footer {
+  display: inline-block;
+    background:#02215f;
+    width:100%;
+    position:fixed;
+    bottom:0;
+    left:0; 
+}
+
+

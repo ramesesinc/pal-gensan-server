@@ -1,0 +1,117 @@
+<%
+def maxcounter = 0; 
+def dateSvc = SERVICE.lookup('DateService', 'main');
+def serverDate = dateSvc.format('MMMMM dd, yyyy', dateSvc.getServerDate());
+
+def gSvc = SERVICE.lookup('QueueGroupService', 'main'); 
+def groupinfo = gSvc.open( PARAMS.group );  
+def sections = gSvc.getSections( PARAMS.group ); 
+sections.each{ o-> 
+	o.counter  = '-';
+	o.ticketno = '---';
+	o.uuid = ''+ o.objid; 
+	def counters = gSvc.getSectionCounters( o.objid ); 
+	def c = counters?.find{( it.ticketno )} 
+	if ( c ) { 
+		o.counter = c.code;		
+		o.ticketno = c.ticketno; 
+	}
+}
+%>
+
+<div class="wrapper"> <!-- open wrapper -->	
+<div class="header-dep">
+</div>
+	<div class="header-serving">
+		<img src="/res/queue/images/lgu-logo.png" alt="lgu logo" class='lgu-logo'>
+	</div>
+<div class="header-counter">
+<p id="clockbox" class="deskclock"></p>
+</div>
+
+	<div class="content"> <!-- open content -->	
+		<div class="wrap"> <!-- open wrap -->
+
+			<div class="servedQueue"> 
+				<div class="serving-container">
+						<div class="header-dep header-name">
+							<h2>NOW SERVING</h2>
+						</div>
+						<div class="header-serving header-name">
+							<h2>TICKET NUMBER</h2>
+						</div>
+						<div class="header-counter header-name">
+							<h2>COUNTER</h2>
+						</div>
+				<% sections.each{ a-> %> 
+					<div class="counter-container">
+						<div class="header-dep">
+							<div class="dep-name">
+								<h2>${a.title}</h2>
+							</div>
+						</div>
+						<div class="header-serving">
+							<div class="ticketno">
+								<h2 id="${a.uuid}_ticketno">${a.ticketno ? a.ticketno : '&nbsp;'}</h2>
+							</div>
+						</div>
+						<div class="header-counter">
+							<div class="counterno">
+								<h2 id="${a.uuid}_counterid">${a.counter ? a.counter : '&nbsp;'}</h2>
+							</div>
+						</div>
+					</div>
+				<%}%> 
+				</div>
+			</div>
+		</div> <!-- close wrap -->	
+
+<div id="footer">
+	<div class="footer-leftside" id="footer-body">
+		<marquee behavior="scroll" scrollamount="10">
+			<h3 class="announcement" disp> 
+				Welcome 
+			</h3> 
+		</marquee> 
+	</div>
+	<div class="rameses-logo">
+		<img src="/res/queue/images/rameses.png" alt="rameses logo" class='rameses-logo'>
+	</div>
+</div>
+${_script}
+</div> <!-- close wrapper -->
+
+<div id="voice-message" style="position:absolute; z-index:999;"></div>
+
+<script>
+
+(function localFileVideoPlayer() {
+	'use strict'
+  var URL = window.URL || window.webkitURL;
+  var displayMessage = function (message, isError) {
+    var element = document.querySelector('#message');
+    element.innerHTML = message;
+    element.className = isError ? 'error' : 'info';
+  }
+  var playSelectedFile = function (event) {
+    var file = this.files[0];
+    var type = file.type;
+    var videoNode = document.querySelector('video');
+    var canPlay = videoNode.canPlayType(type);
+    if (canPlay === '') canPlay = 'no';
+    var message = 'Can play type "' + type + '": ' + canPlay;
+    var isError = canPlay === 'no';
+    displayMessage(message, isError);
+
+    if (isError) {
+      return;
+    }
+
+    var fileURL = URL.createObjectURL(file);
+    window.console.log(fileURL);
+    videoNode.src = fileURL;
+  }
+  var inputNode = document.querySelector('input');
+  inputNode.addEventListener('change', playSelectedFile, false);
+})();
+</script>

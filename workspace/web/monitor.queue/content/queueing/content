@@ -1,0 +1,70 @@
+<%
+def gSvc = SERVICE.lookup('QueueGroupService', 'main'); 
+def groups = gSvc.getGroupsWithSections(); 
+%>
+
+<div class="container"><!-- open container -->
+	<div class="container-fluid"> <!-- open container-fluid -->
+		<div class="row"> <!-- open row -->
+			<ul class="header">
+			  <li><img src="/res/queue/images/lgu-logo12.png" alt="lgu logo" class="lgu-logo" style="width:400px"></li>
+			  <li></li>
+			  <li class="date">
+			    <img src="/res/queue/images/rameses.png" alt="rameses logo" class="rameses-logo" style="width:200px">
+			    <p id="clockbox"></p>
+			  </li>
+			</ul>
+		</div> <!-- close row -->
+	</div><!-- close container-fluid -->
+	<%groups.each { g-> %>
+	
+		<div class="row">
+	        <h1 class="page-header">${g.title}</h1>
+	    </div>
+		<div class="row"> <!-- open row -->
+			<div class="spliter"> <!-- opens pliter -->
+		<%g.sections.each { s->%>
+		
+			<div class="screen12"> 
+			<div class="ticket-btn">			
+				<a class="k-button" r:context="queue" r:name="fetchNextNumber" r:param_sectionid="${s.objid}" /> 
+					<span>${s.title}</span>
+				</a>
+			</div> 
+			</div>
+		<%}%>
+			</div> <!-- close spliter -->
+		</div> <!-- close row -->
+	
+	<%}%>
+
+</div><!-- close container -->
+
+
+
+
+<script>
+var qnpage = @register('/queuenumber') 
+
+\$put("queue", new function(){
+
+	var svc = Service.lookup('QueueService', 'main');
+
+	this.sectionid = null; 
+
+	this.fetchNextNumber = function() {
+		if ( !this.sectionid ) {
+			alert('No sectionid specified'); 
+			return; 
+		}
+
+		var data = svc.fetchNextTicket({ sectionid: this.sectionid }); 
+		return new PopupOpener(qnpage.id, { 
+			txndate: data.txndatestr, 
+			ticketno: data.ticketno, 
+			title: data.section.title 
+		}); 
+	}
+}); 
+</script> 
+
