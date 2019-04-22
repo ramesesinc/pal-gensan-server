@@ -96,10 +96,12 @@ class QueueCounterServiceInterceptor {
 	@Async 
 	@ProxyMethod(local=true) 
 	public void notifyHttp( data ) { 
+		/*
 		if ( !data ) return; 
 
 		def msgs = (data instanceof List? data : [data]); 
 		msgs.each{ queue_poll.send( it ) } 
+		*/
 	} 
 	@Async 
 	@ProxyMethod(local=true) 

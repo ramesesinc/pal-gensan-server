@@ -14,6 +14,6 @@ from (
 		and enddate >= $P{startdate} 
 		and enddate <  $P{enddate} 
 		and state in ('CLOSED','SKIP')  
-		${filter} 
+		${filters} 
 )tmpa 
 group by sectionid, sectiontitle, txnyear, txnday, txnhour 

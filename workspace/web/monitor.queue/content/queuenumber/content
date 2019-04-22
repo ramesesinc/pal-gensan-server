@@ -47,7 +47,7 @@ input.queue-button { font-size:12pt;width: 100px;margin-bottom: 10px; margin-top
 
 <div align="center"> 
      <input class="queue-button" type="button" r:context="queuenumber" value="Print"  r:name="print">
-     <!--<input class="queue-button" type="button" r:context="queuenumber"  value="Close" r:name="doClose" r:immediate="true">-->
+     <input class="queue-button" type="button" r:context="queuenumber"  value="Close" r:name="doClose" r:immediate="true">
 </div> 
 
 
